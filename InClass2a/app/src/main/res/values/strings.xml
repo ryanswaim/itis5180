@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">In Class 2a</string>
+    <string name="BMI_Title">Boby Mass Index (BMI)</string>
+    <string name="Weight_Title">Weight</string>
+    <string name="Height_Title">Height</string>
+    <string name="Calculate_Button">Calculate BMI</string>
+    <string name="BMI_Calculated">BMI Calculated</string>
+    <string name="Invalid_Inputs">Invalid Inputs</string>
+    <string name="Pounds_Hint">lbs</string>
+    <string name="Feet_Hint">feet</string>
+    <string name="Inches_Hint">inches</string>
+</resources>

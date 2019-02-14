@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">InClass03</string>
+    <string name="firstname_hint">First Name</string>
+    <string name="lastname_hint">Last Name</string>
+    <string name="studentID_hint">Student ID</string>
+    <string name="department_hint">Department:</string>
+    <string name="cs_hint">CS</string>
+    <string name="sis_hint">SIS</string>
+    <string name="bio_hint">BIO</string>
+    <string name="other_hint">Other</string>
+    <string name="save_hint">Save</string>
+    <string name="name_display">Name:</string>
+    <string name="studentID_display">Student ID:</string>
+    <string name="edit_hint">Edit</string>
+</resources>

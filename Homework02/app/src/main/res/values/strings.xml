@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Homework02</string>
+    <string name="title_text">Password Generator</string>
+    <string name="for_thread_text">For Thread:</string>
+</resources>
