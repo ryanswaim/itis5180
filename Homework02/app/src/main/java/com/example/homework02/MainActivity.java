@@ -2,6 +2,7 @@ package com.example.homework02;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -10,11 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -29,12 +32,36 @@ public class MainActivity extends AppCompatActivity {
     //create progress dialog/BAR
     ProgressDialog progressDialog;
 
+    //create 2 arrays fpr the thread passwords and the async passwords
+    ArrayList<String> threadPasswords = new ArrayList<>();
+    ArrayList<String> asyncPasswords = new ArrayList<>();
+
+    //keys for the array list to be received by the generated passwords activity
+    public static String THREAD_KEY = "THREAD_PASSWORDS";
+    public static String ASYNC_KEY = "ASYNC_PASSWORDS";
+
+    int numThreadPasswords;
+    int numAsyncPasswords;
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        findViewById(R.id.select_count_thread_seekBar).setEnabled(true);
+        findViewById(R.id.select_length_thread_seekBar).setEnabled(true);
+        findViewById(R.id.select_count_async_seekBar).setEnabled(true);
+        findViewById(R.id.select_length_async_seekBar).setEnabled(true);
+        findViewById(R.id.generate_passwords_button).setEnabled(true);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         setTitle(R.string.title_text);
+
+        numThreadPasswords = -1;
+        numAsyncPasswords = -1;
 
         //initialize the thread pool to 4 threads max
         threadPool = Executors.newFixedThreadPool(2);
@@ -48,9 +75,21 @@ public class MainActivity extends AppCompatActivity {
                 switch (msg.what) {
                     case GeneratePassword.STATUS_STOP:
                         progressDialog.setProgress(progressDialog.getProgress() + 1);
-                        //Toast.makeText(MainActivity.this, "" + msg.obj, Toast.LENGTH_SHORT).show();
+
+                        threadPasswords.add((String) msg.obj);
+
+                        Log.d("demo", "Thread Passwords Size: " + threadPasswords.size());
+                        Log.d("demo", "Num Thread Passwords: " + numAsyncPasswords);
+
                         if(progressDialog.getProgress() == progressDialog.getMax()) {
                             progressDialog.dismiss();
+
+                            if(asyncPasswords.size() == numAsyncPasswords) {
+                                Intent intent = new Intent(MainActivity.this, GeneratedPasswordsActivity.class);
+                                intent.putExtra(THREAD_KEY, threadPasswords);
+                                intent.putExtra(ASYNC_KEY, asyncPasswords);
+                                startActivity(intent);
+                            }
                         }
                         break;
                 }
@@ -130,21 +169,38 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.generate_passwords_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int pCount = countSeekbarThread.getProgress();
-                int pLength = lengthSeekbarThread.getProgress();
+                numThreadPasswords = countSeekbarThread.getProgress();
+                int pLengthThread = lengthSeekbarThread.getProgress();
+
+                numAsyncPasswords = countSeekbarAsync.getProgress();
+                int pLengthAsync = lengthSeekbarAsync.getProgress();
+
+                threadPasswords = new ArrayList<>();
+                asyncPasswords = new ArrayList<>();
 
                 //initialize progress bar(dialog)
                 progressDialog = new ProgressDialog(MainActivity.this);
                 progressDialog.setMessage("Generating Passwords");
-                progressDialog.setMax(pCount);
+                progressDialog.setMax(numThreadPasswords);
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 progressDialog.setCancelable(false);
                 progressDialog.show();
 
-                for(int i = 0; i < pCount; i++) {
-                    threadPool.execute(new GeneratePassword(pLength));
+                for(int i = 0; i < numThreadPasswords; i++) {
+                    threadPool.execute(new GeneratePassword(pLengthThread));
                     //Log.d("demo", "In For loop executing GeneratePassword.");
                 }
+
+                for(int i = 0; i < numAsyncPasswords; i++) {
+                    new GeneratePasswordsAsync().execute(pLengthAsync);
+                }
+
+                //disable buttons on click
+                countSeekbarThread.setEnabled(false);
+                lengthSeekbarThread.setEnabled(false);
+                countSeekbarAsync.setEnabled(false);
+                lengthSeekbarAsync.setEnabled(false);
+                findViewById(R.id.generate_passwords_button).setEnabled(false);
             }
         });
         //endregion
@@ -152,18 +208,20 @@ public class MainActivity extends AppCompatActivity {
 
     //async code
     //region
-    class DoWorkAsync extends AsyncTask<Integer, Integer, String> {
-
-        @Override
-        protected void onPreExecute() {
-        }
+    class GeneratePasswordsAsync extends AsyncTask<Integer, Integer, String> {
 
         @Override
         protected void onPostExecute(String aString) {
-        }
+            asyncPasswords.add(aString);
+            Log.d("demo", "Async Passwords Size: " + asyncPasswords.size());
+            Log.d("demo", "Num Async Passwords: " + numAsyncPasswords);
 
-        @Override
-        protected void onProgressUpdate(Integer... values) {
+            if(threadPasswords.size() == numThreadPasswords && asyncPasswords.size() == numAsyncPasswords) {
+                Intent intent = new Intent(MainActivity.this, GeneratedPasswordsActivity.class);
+                intent.putExtra(THREAD_KEY, threadPasswords);
+                intent.putExtra(ASYNC_KEY, asyncPasswords);
+                startActivity(intent);
+            }
         }
 
         @Override

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Homework02</string>
     <string name="title_text">Password Generator</string>
+    <string name="title_text2">Generated Passwords</string>
     <string name="for_thread_text">For Thread:</string>
     <string name="select_password_count_text">Select Password Count:</string>
     <string name="show_password_count_default_text">1</string>
@@ -8,4 +9,7 @@
     <string name="show_password_length_default_text">7</string>
     <string name="for_async_text">For AsyncTask:</string>
     <string name="generate_passwords_button_text">Generate</string>
+    <string name="thread_string">Passwords generated using Thread:</string>
+    <string name="async_string">Passwords generated using AsyncTask:</string>
+    <string name="finish_string">Finish</string>
 </resources>
