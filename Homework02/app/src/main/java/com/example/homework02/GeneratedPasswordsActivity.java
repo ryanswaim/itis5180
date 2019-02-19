@@ -15,6 +15,11 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+//Homework Assignment 02
+//Group 9
+//Rockford Stoller
+//Ryan Swaim
+
 public class GeneratedPasswordsActivity extends AppCompatActivity {
 
     @Override

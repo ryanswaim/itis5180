@@ -21,6 +21,11 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+//Homework Assignment 02
+//Group 9
+//Rockford Stoller
+//Ryan Swaim
+
 public class MainActivity extends AppCompatActivity {
 
     //create a thread pool

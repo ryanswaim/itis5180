@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">InClass05</string>
+    <string name="title_text">Main Activity</string>
+    <string name="choose_a_keyword_text">Choose a Keyword</string>
+    <string name="go_button_text">Go</string>
+    <string name="search_keyword_hint">Search Keyword</string>
+</resources>
