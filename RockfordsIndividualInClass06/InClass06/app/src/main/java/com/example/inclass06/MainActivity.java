@@ -16,6 +16,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+//In-Class Assignment 06
+//Rockford Stoller
+
 public class MainActivity extends AppCompatActivity implements GetArticleInfoAsync.ArticleInfoData {
 
     String[] categories = {"business", "entertainment", "general", "health", "science", "sports", "technology"};
