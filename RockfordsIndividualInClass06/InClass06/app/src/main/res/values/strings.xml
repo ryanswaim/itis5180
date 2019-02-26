@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">InClass06</string>
+    <string name="activity1_title_text">Main Activity</string>
+    <string name="go_button_text">Go</string>
+    <string name="show_categories_text_hint">Show Categories</string>
+    <string name="choose_category_title">Choose Category</string>
+    <string name="no_image_text">No Image Found</string>
+</resources>
