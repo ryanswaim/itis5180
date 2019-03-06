@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrackDisplayActivity">
+
+    <ImageView
+        android:id="@+id/artwork_imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="105dp"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/track_title_textView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/artwork_imageView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="49dp"
+        android:maxHeight="80dp"
+        android:text="@string/track_title_hint"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/track_genre_textView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/track_title_textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="89dp"
+        android:maxHeight="35dp"
+        android:text="@string/genre_hint"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/track_artist_textView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/track_genre_textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="37dp"
+        android:maxHeight="35dp"
+        android:text="@string/artist_hint"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/album_title_textView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/track_artist_textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="37dp"
+        android:maxHeight="35dp"
+        android:text="@string/album_hint"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/track_price_textView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/album_title_textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="37dp"
+        android:maxHeight="35dp"
+        android:text="@string/track_price_hint"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/album_price_textView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/track_price_textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="37dp"
+        android:maxHeight="35dp"
+        android:text="@string/album_price_hint"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/finish_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/album_price_textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="39dp"
+        android:text="@string/finish_button_text" />
+</RelativeLayout>

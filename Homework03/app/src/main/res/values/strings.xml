@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Homework03</string>
+    <string name="main_activity_title">iTunes Music Search</string>
+    <string name="search_hint">Keyword Search</string>
+    <string name="limit_hint">Limit: 10</string>
+    <string name="search_button_text">Search</string>
+    <string name="reset_button_text">Reset</string>
+    <string name="sort_by_hint">Sort by:</string>
+    <string name="price_sort_hint">Price</string>
+    <string name="date_sort_hint">Date</string>
+    <string name="results_hint">Results</string>
+    <string name="track_title_hint">Track: Title 1</string>
+    <string name="price_hint">Price: xx.xx $</string>
+    <string name="artist_hint">Artist: Name</string>
+    <string name="date_hint">Date: MM-DD-YYYY</string>
+    <string name="genre_hint">Genre: Genre 1</string>
+    <string name="album_hint">Album: Album 1</string>
+    <string name="track_price_hint">Track Price: xx.xx $</string>
+    <string name="album_price_hint">Album_Price: xx.xx $</string>
+    <string name="finish_button_text">Finish</string>
+</resources>
