@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -92,6 +93,8 @@ public class MainActivity extends AppCompatActivity implements GetTracksAsync.Tr
                         searchTerm += "+" + temp[i];
                     }
                     //endregion
+
+                    Log.d("demo", "Value being sent to RequestParams as term: " + searchTerm);
 
                     url = new RequestParams()
                             .addParameter("term", searchTerm)
