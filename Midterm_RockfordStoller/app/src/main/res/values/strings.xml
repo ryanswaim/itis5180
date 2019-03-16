@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Midterm_RockfordStoller</string>
+    <string name="main_activity_title">MusixMatch Track Search</string>
+    <string name="track_title_hint">Track: Title 1</string>
+    <string name="album_hint">Album: Album 1</string>
+    <string name="artist_hint">Artist: Name 1</string>
+    <string name="date_hint">Date: mm-dd-yyyy</string>
+    <string name="search_keyword_hint">Search Keyword</string>
+    <string name="limit_display_placeholder">Limit: 10</string>
+    <string name="search_button_text">Search</string>
+    <string name="track_rating_button_text">Track Rating</string>
+    <string name="artist_rating_button_text">Artist Rating</string>
+    <string name="sort_by_text">Sort by:</string>
+    <string name="search_results_text">Search Results</string>
+</resources>

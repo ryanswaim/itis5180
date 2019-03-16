@@ -1,5 +1,7 @@
 package com.example.homework03;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,11 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -40,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements GetTracksAsync.Tr
     int numberOfResults;
     Switch sortSwitch;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements GetTracksAsync.Tr
         limitDisplayTextView = findViewById(R.id.limit_display_textView);
         numberOfResults = 10;
         sortSwitch = findViewById(R.id.sort_switch);
+
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setMessage("Loading");
+        progressDialog.setCancelable(false);
 
         //limit seekbar
         //region
@@ -101,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements GetTracksAsync.Tr
                             .addParameter("limit", numberOfResults + "");
                     String urlStr = url.getEncodedUrl("https://itunes.apple.com/search");
                     new GetTracksAsync(MainActivity.this).execute(urlStr);
+                    progressDialog.show();
 
                 } else if (searchBar.getText().length() <= 0) {
                     searchBar.setError("You must enter a keyword to search");
@@ -224,11 +235,12 @@ public class MainActivity extends AppCompatActivity implements GetTracksAsync.Tr
                 startActivity(intent);
             }
         });
+
+        progressDialog.dismiss();
     }
 
     @Override
     public void updateProgress(int progress) {
-
     }
     //endregion
 }
