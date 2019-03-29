@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Homework05</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="current_expenses_text">Current Expenses:</string>
+    <string name="goTo_add_expense_button_text">Add</string>
+    <string name="message_text">There is no expense to show, Please add your expenses from the menu.</string>
+    <string name="add_an_expense_text">Add An Expense</string>
+    <string name="expense_name_text">Name:</string>
+    <string name="amount_text">Cost:</string>
+    <string name="add_expense_button_text">Add Expense</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="placeholder_text">Placeholder</string>
+    <string name="close_button_text">Close</string>
+    <string name="name_text">Name</string>
+    <string name="category_text">Category</string>
+    <string name="date_text">Date:</string>
+    <string name="expense_details_text">Expense Details</string>
+    <string name="save_changes_text">Save Changes</string>
+    <string name="edit_expense_text">Edit Expense</string>
+    <string name="date_picker_button_text">Pick a Date</string>
+    <string name="receipt_text">Receipt:</string>
+    <string name="receipt_picker_button_text">Choose an Image</string>
+    <string name="total_cost_text">Total:</string>
+
+    <string-array name="dropdownItems">
+        <item>Sort by Cost</item>
+        <item>Sort by Date</item>
+        <item>Reset All</item>
+    </string-array>
+</resources>
