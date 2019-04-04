@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/sort_by_cost_item"
+        android:title="Sort by Cost"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sort_by_date_item"
+        android:title="Sort by Date"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/reset_all_item"
+        android:title="Reset All"
+        app:showAsAction="never" />
+</menu>
