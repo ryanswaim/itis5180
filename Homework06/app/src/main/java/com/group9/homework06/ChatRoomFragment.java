@@ -32,6 +32,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -53,6 +54,7 @@ public class ChatRoomFragment extends Fragment {
     private String downloadUrl = null;
     private ImageView addImageView;
     private MainActivity mainActivity = null;
+    private String storeMessageID = null;
 
     public ChatRoomFragment() {
         // Required empty public constructor
@@ -142,9 +144,13 @@ public class ChatRoomFragment extends Fragment {
                     message.dateTime = new Date();
                     message.firstName = mainActivity.currentUser.getDisplayName().substring(0, mainActivity.currentUser.getDisplayName().indexOf(' '));
                     message.lastName = mainActivity.currentUser.getDisplayName().substring(mainActivity.currentUser.getDisplayName().indexOf(' ') + 1);
+                    message.userID = mainActivity.currentUser.getUid();
+                    //create unique userID for image deletion from storage on firebase.
+                    message.messageID = storeMessageID;
 
                     //clear message creation fields
                     downloadUrl = null;
+                    storeMessageID = null;
                     addImageView.setImageResource(R.drawable.addimage);
                     messageEditText.setText("");
 
@@ -185,8 +191,8 @@ public class ChatRoomFragment extends Fragment {
             MainActivity mainActivityContext = (MainActivity) getContext();
 
             //random for generating two numbers between 0 and 99 for eliminating overwrites
-            Random random = new Random();
-            final StorageReference imageRef = mainActivityContext.storageRef.child("images/" + filePath.getLastPathSegment() + random.nextInt(99) + random.nextInt(99));
+            storeMessageID = String.valueOf(UUID.randomUUID());
+            final StorageReference imageRef = mainActivityContext.storageRef.child("images/" + storeMessageID);
             UploadTask uploadTask = imageRef.putFile(filePath);
 
             // Register observers to listen for when the download is done or if it fails

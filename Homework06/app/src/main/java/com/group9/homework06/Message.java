@@ -9,17 +9,19 @@ import java.util.Date;
 //Ryan Swaim
 
 public class Message implements Serializable {
-    String messageText, imageUrl, firstName, lastName;
+    String messageText, imageUrl, firstName, lastName, userID, messageID;
     Date dateTime;
 
     public Message() {
     }
 
-    public Message(String messageText, String imageUrl, String firstName, String lastName, Date dateTime) {
+    public Message(String messageText, String imageUrl, String firstName, String lastName, String userID, String messageID, Date dateTime) {
         this.messageText = messageText;
         this.imageUrl = imageUrl;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userID = userID;
+        this.messageID = messageID;
         this.dateTime = dateTime;
     }
 }

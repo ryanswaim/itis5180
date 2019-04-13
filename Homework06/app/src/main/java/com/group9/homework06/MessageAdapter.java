@@ -67,16 +67,30 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             Picasso.get().load(message.imageUrl).placeholder(R.drawable.loading).into(messageImageView);
         }
 
+        //get MainActivity instance
+        final MainActivity mainActivity = (MainActivity) view.getContext();
+
         //set delete image view click listener
         deleteImageViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myData.remove(index);
+                Message temp = myData.remove(index);
                 notifyDataSetChanged();
-                MainActivity mainActivity = (MainActivity) view.getContext();
                 mainActivity.myRef.setValue(myData);
+                //need to delete from storage on firebase on delete.
+                mainActivity.storageRef.child("images/" + temp.messageID).delete();
             }
         });
+
+        //if the current user's name equals the message senders name
+        if(mainActivity.currentUser.getUid().equals(message.userID)) {
+            //set delete button to visible
+            deleteImageViewButton.setVisibility(View.VISIBLE);
+        }
+        else {
+            //set delete button to invisible
+            deleteImageViewButton.setVisibility(View.INVISIBLE);
+        }
 
         ViewHolder viewHolder = new ViewHolder(view);
 
@@ -98,16 +112,31 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             Picasso.get().load(message.imageUrl).placeholder(R.drawable.loading).into(viewHolder.messageImageView);
         }
 
+        //get MainActivity instance
+        final MainActivity mainActivity = (MainActivity) viewHolder.deleteImageViewButton.getContext();
+
         //set delete image view click listener
         viewHolder.deleteImageViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myData.remove(position);
+                Message temp = myData.remove(position);
                 notifyDataSetChanged();
-                MainActivity mainActivity = (MainActivity) viewHolder.deleteImageViewButton.getContext();
                 mainActivity.myRef.setValue(myData);
+                //need to delete from storage on firebase on delete.
+                mainActivity.storageRef.child("images/" + temp.messageID).delete();
             }
         });
+
+        //if the current user's name equals the message senders name
+        if(mainActivity.currentUser.getUid().equals(message.userID)) {
+            //set delete button to enabled
+            viewHolder.deleteImageViewButton.setVisibility(View.VISIBLE);
+        }
+        else {
+            //set delete button to disabled
+            viewHolder.deleteImageViewButton.setVisibility(View.INVISIBLE);
+        }
+
     }
 
     @Override
