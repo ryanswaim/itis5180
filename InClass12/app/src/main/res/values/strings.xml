@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">InClass12</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="api_key">AIzaSyCrQ9wifukgByzMZDYgA4y27DvFMDaRzdE</string>
+    <string name="city_search_hint">Search City</string>
+    <string name="trip_name_hint">Trip Name</string>
+    <string name="search_button_text">Search</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_trip_text">Add Trip</string>
+    <string name="add_location_text">Add Location</string>
+</resources>
