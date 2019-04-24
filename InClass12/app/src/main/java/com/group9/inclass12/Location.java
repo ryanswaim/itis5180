@@ -1,5 +1,10 @@
 package com.group9.inclass12;
 
+//In-Class12
+//Group 9
+//Rockford Stoller
+//Ryan Swaim
+
 public class Location {
     String lat;
     String lng;

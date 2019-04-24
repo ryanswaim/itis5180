@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
-//In-Class Assignment 05
+//In-Class12
 //Group 9
 //Rockford Stoller
 //Ryan Swaim

@@ -15,17 +15,14 @@ import java.util.ArrayList;
 //Rockford Stoller
 //Ryan Swaim
 
-public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHolder> {
+public class LocationInDisplayAdapter extends RecyclerView.Adapter<LocationInDisplayAdapter.ViewHolder> {
 
     ArrayList<Location> myData;
 
-    private int tripIndex;
-
     MainActivity mainActivity;
 
-    public LocationAdapter(ArrayList<Location> myData, int tripIndex) {
+    public LocationInDisplayAdapter(ArrayList<Location> myData) {
         this.myData = myData;
-        this.tripIndex = tripIndex;
     }
 
     @Override
@@ -40,13 +37,10 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         final int index = i;
 
-        final View view  = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.location_item, viewGroup, false);
-
-        mainActivity = (MainActivity) view.getContext();
+        final View view  = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.location_in_display_item, viewGroup, false);
 
         //get all inner views
-        TextView locationNameTextView = view.findViewById(R.id.location_name_in_item_list_textView);
-        ImageView deleteImageViewButton = view.findViewById(R.id.delete_location_imageView_button);
+        TextView locationNameTextView = view.findViewById(R.id.location_name_in_display_item_list_textView);
 
         //get correct note data
         final Location location = myData.get(index);
@@ -54,15 +48,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
         //set text view text with note data
         locationNameTextView.setText(location.name);
         locationNameTextView.setSingleLine(true);
-
-        deleteImageViewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainActivity.trips.get(tripIndex).locations.remove(index);
-                notifyDataSetChanged();
-                mainActivity.updateDatabase();
-            }
-        });
 
         ViewHolder viewHolder = new ViewHolder(view);
 
@@ -77,14 +62,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
         viewHolder.locationNameTextView.setText(location.name);
         viewHolder.locationNameTextView.setSingleLine(true);
 
-        viewHolder.deleteImageViewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainActivity.trips.get(tripIndex).locations.remove(position);
-                notifyDataSetChanged();
-                mainActivity.updateDatabase();
-            }
-        });
     }
 
     @Override
@@ -95,13 +72,11 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView locationNameTextView;
-        ImageView deleteImageViewButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            locationNameTextView = itemView.findViewById(R.id.location_name_in_item_list_textView);
-            deleteImageViewButton = itemView.findViewById(R.id.delete_location_imageView_button);
+            locationNameTextView = itemView.findViewById(R.id.location_name_in_display_item_list_textView);
         }
     }
 }

@@ -26,11 +26,29 @@
             android:hint="@string/city_search_hint"
             android:inputType="textPersonName" />
 
+        <TextView
+            android:id="@+id/current_picked_date_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/planned_date_text" />
+
         <Button
-            android:id="@+id/search_button"
+            android:id="@+id/pick_date_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_date_text" />
+
+        <Button
+            android:id="@+id/search_and_add_trip_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/search_button_text" />
+
+        <Button
+            android:id="@+id/cancel_add_trip_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_text" />
     </LinearLayout>
 
 </FrameLayout>

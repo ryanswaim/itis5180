@@ -11,6 +11,11 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+//In-Class12
+//Group 9
+//Rockford Stoller
+//Ryan Swaim
+
 public class TripsListFragment extends Fragment {
 
     public static String TRIP_LIST_KEY = "trip_list_key";
@@ -25,13 +30,18 @@ public class TripsListFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_trips_list, container, false);
 
-        getActivity().setTitle("Trips");
+        getActivity().setTitle("Planned Trips");
 
         mainActivity = (MainActivity) getActivity();
 

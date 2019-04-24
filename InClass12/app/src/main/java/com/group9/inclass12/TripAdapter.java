@@ -57,7 +57,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
         displayTripImageViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ADD LATER!!!!!!!!!!!!!!!!!!!!!!!!!!
+                mainActivity.goToDisplayTripFragment(index);
             }
         });
 
@@ -71,8 +71,9 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
         deleteImageViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myData.remove(index);
+                mainActivity.trips.remove(index);
                 notifyDataSetChanged();
+                mainActivity.updateDatabase();
             }
         });
 
@@ -88,6 +89,29 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
         final Trip trip = myData.get(position);
         viewHolder.tripNameTextView.setText(trip.tripName);
         viewHolder.tripNameTextView.setSingleLine(true);
+
+        viewHolder.displayTripImageViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.goToDisplayTripFragment(position);
+            }
+        });
+
+        viewHolder.editTripImageViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.goToEditTripFragment(position);
+            }
+        });
+
+        viewHolder.deleteImageViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.trips.remove(position);
+                notifyDataSetChanged();
+                mainActivity.updateDatabase();
+            }
+        });
     }
 
     @Override
@@ -98,12 +122,16 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tripNameTextView;
+        ImageView displayTripImageViewButton;
+        ImageView editTripImageViewButton;
         ImageView deleteImageViewButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tripNameTextView = itemView.findViewById(R.id.trip_name_in_item_list_textView);
+            displayTripImageViewButton = itemView.findViewById(R.id.map_of_trip_imageView_button);
+            editTripImageViewButton = itemView.findViewById(R.id.edit_trip_imageView_button);
             deleteImageViewButton = itemView.findViewById(R.id.delete_trip_imageView_button);
         }
     }
